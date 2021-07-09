@@ -19,7 +19,7 @@ In a small Katalon Studio project, I have made 3 Execution Profiles. All of Glob
 |name|value|
 |:---|:----|
 |URL|http://demoaut-mimic.kazurayam.com/|
-|PARAM_DEVELOP|ppp|
+|PARAM_DEVELOP|ddd|
 
 ![3ExecutionProfiles](docs/images/3ExecutionProfiles.png)
 
@@ -87,23 +87,25 @@ GlobalVariable.PARAM_DEVELOP value              : ddd
 
 Here I will list concrete questions and answeres based on the above data:
 
-Q1. When I ran a Test Case with the "`default`" Profile applied, is the `GlobalVariable.URL` present? Is it accessible for the test case?
+>Q1. When I ran a Test Case with the "`default`" Profile applied, is the `GlobalVariable.URL` present? Is it accessible for the test case?
 
-> In that case, `GlobalVariable.URL` is present. But the value is null.
+In that case, `GlobalVariable.URL` is present. But the value is null.
 
-Q2. When I ran a Test Case with the "`default`" Profile applied, what value of `GlobalVariable.PARAM_PRODUCT` can  the test case see?
+>Q2. When I ran a Test Case with the "`default`" Profile applied, what value of `GlobalVariable.PARAM_PRODUCT` can  the test case see?
 
-> In that case, `GlobalVariable.PARAM_PRODUCT` is present. But the value is null.
+In that case, `GlobalVariable.PARAM_PRODUCT` is present. But the value is null.
 
-Q3. When I ran a Test Case with the "`ProductionEnv`" Profile applied, is the `GlobalVariable.BASE_PARAM` defined in the `default` present? Is it accessible for the test case? What value of `GlobalVariable.BASE_PARAM` can the test case see?
+>Q3. When I ran a Test Case with the "`ProductionEnv`" Profile applied, is the `GlobalVariable.BASE_PARAM` defined in the `default` present? Is it accessible for the test case? What value of `GlobalVariable.BASE_PARAM` can the test case see?
 
-> In that case, `GlobalVariable.BASE_PARAM` is present, and the value ("`foo`") is available for the test case. This means that the GlobalVariables defined in the `default` Profile is always visible regardles which Profile is actually chosen.
+In that case, `GlobalVariable.BASE_PARAM` is present, and the value ("`foo`") is available for the test case. This means that the GlobalVariables defined in the `default` Profile is always visible regardles which Profile is actually chosen.
 
-Q4. When I ran a Test Case with the "`ProductionEnv`" Profile applied, is the `GlobalVariable.PARAM_DEVELOP` defined in the `DevelopEnv` present? Is it accessible for the test case? What value of `GlobalVariable.PARAM_DEVELOP` can the test case see?
+>Q4. When I ran a Test Case with the "`ProductionEnv`" Profile applied, is the `GlobalVariable.PARAM_DEVELOP` defined in the `DevelopEnv` present? Is it accessible for the test case? What value of `GlobalVariable.PARAM_DEVELOP` can the test case see?
 
-> In that case, `GlobalVariable.PARAM_DEVELOP` is present. But the value is null.
+In that case, `GlobalVariable.PARAM_DEVELOP` is present. But the value is null.
 
-### APPENDIX: loading Execution Profiles
+## APPENDEX
+
+### loading Execution Profiles by Keyword
 
 The Test Case [`Test Cases/TC3`](Scripts/TC3/Script1625824414513.groovy) casts a spell:
 ```
@@ -125,52 +127,24 @@ new ExecutionProfilesLoader().loadProfiles("ProductEnv", "DevelopEnv")
 TC3 emits the following output in the Console:
 
 ```
-2021-07-09 19:02:43.196 DEBUG testcase.TC3                             - 1: appliedProfile = getExecutionProfile()
-
-2021-07-09 19:02:43.201 DEBUG testcase.TC3                             - 2: println("Execution Profile applied                       : " + appliedProfile)
 Execution Profile applied                       : default
 
-2021-07-09 19:02:43.219 DEBUG testcase.TC3                             - 3: println("GlobalVariable.URL is present before loading?   : " + ExpandoGlobalVariable.isGlobalVariablePresent("URL"))
 GlobalVariable.URL is present before loading?   : true
-
-2021-07-09 19:02:43.715 DEBUG testcase.TC3                             - 4: println("GlobalVariable.URL value before loading         : " + ExpandoGlobalVariable.getGlobalVariableValue("URL"))
 GlobalVariable.URL value before loading         : null
 
-2021-07-09 19:02:43.745 DEBUG testcase.TC3                             - 5: com.kazurayam.ks.globalvariable.ExecutionProfilesLoader.loadProfile("ProductEnv")
-2021-07-09 19:02:44.027 INFO  k.k.c.m.CustomKeywordDelegatingMetaClass - com.kazurayam.ks.globalvariable.ExecutionProfilesLoader.loadProfile is PASSED
-
-2021-07-09 19:02:44.028 DEBUG testcase.TC3                             - 6: println("GlobalVariable.URL is present after loading?    : " + ExpandoGlobalVariable.isGlobalVariablePresent("URL"))
 GlobalVariable.URL is present after loading?    : true
-
-2021-07-09 19:02:44.031 DEBUG testcase.TC3                             - 7: println("GlobalVariable.URL value after loading          : " + ExpandoGlobalVariable.getGlobalVariableValue("URL"))
 GlobalVariable.URL value after loading          : http://demoaut.katalon.com/
 
-2021-07-09 19:02:44.036 DEBUG testcase.TC3                             - 8: ExecutionProfilesLoader().loadProfiles("ProductEnv", "DevelopEnv")
-
-2021-07-09 19:02:44.190 DEBUG testcase.TC3                             - 9: println("GlobalVariable.URL is present after clear?      : " + ExpandoGlobalVariable.isGlobalVariablePresent("URL"))
 GlobalVariable.URL is present after clear?      : true
-
-2021-07-09 19:02:44.196 DEBUG testcase.TC3                             - 10: println("GlobalVariable.URL value after clear            : " + ExpandoGlobalVariable.getGlobalVariableValue("URL"))
 GlobalVariable.URL value after clear            : http://demoaut-mimic.kazurayam.com/
 
-2021-07-09 19:02:44.198 DEBUG testcase.TC3                             - 11: println("GlobalVariable.PARAM_PRODUCT is present?        : " + ExpandoGlobalVariable.isGlobalVariablePresent("PARAM_PRODUCT"))
 GlobalVariable.PARAM_PRODUCT is present?        : true
-
-2021-07-09 19:02:44.200 DEBUG testcase.TC3                             - 12: println("GlobalVariable.PARAM_PRODUCT                    : " + ExpandoGlobalVariable.getGlobalVariableValue("PARAM_PRODUCT"))
 GlobalVariable.PARAM_PRODUCT                    : ppp
 
-2021-07-09 19:02:44.209 DEBUG testcase.TC3                             - 13: println("GlobalVariable.PARAM_DEVELOP is present?        : " + ExpandoGlobalVariable.isGlobalVariablePresent("PARAM_DEVELOP"))
 GlobalVariable.PARAM_DEVELOP is present?        : true
-
-2021-07-09 19:02:44.214 DEBUG testcase.TC3                             - 14: println("GlobalVariable.PARAM_DEVELOP                    : " + ExpandoGlobalVariable.getGlobalVariableValue("PARAM_DEVELOP"))
 GlobalVariable.PARAM_DEVELOP                    : ddd
 
-2021-07-09 19:02:44.222 DEBUG testcase.TC3                             - 15: ExecutionProfilesLoader().clear()
-
-2021-07-09 19:02:44.230 DEBUG testcase.TC3                             - 16: println("GlobalVariable.URL is present after clear?      : " + ExpandoGlobalVariable.isGlobalVariablePresent("URL"))
 GlobalVariable.URL is present after clear?      : true
-
-2021-07-09 19:02:44.233 DEBUG testcase.TC3                             - 17: println("GlobalVariable.URL value after clear            : " + ExpandoGlobalVariable.getGlobalVariableValue("URL"))
 GlobalVariable.URL value after clear            : http://demoaut-mimic.kazurayam.com/
 ```
 
@@ -178,7 +152,9 @@ This proves that, even when I started the Test Case with the Execution Profile "
 
 ### APPENDIX: adding a GlobalVariable dynamically
 
-The Test Case [`Test Cases/TC4`](Scripts/TC4/Script1625824407891.groovy) casts a spell:
+One more Test Case [`Test Cases/TC4`](Scripts/TC4/Script1625824407891.groovy) 
+
+It casts a spell:
 
 ```
 new ExecutionProfilesLoader.loadEntries(["ADDED": "Hello, world!"])
@@ -206,6 +182,3 @@ GlobalVariable.ADDED value after clear          : null
 ## Conclusion
 
 The artifact of [ExecutionProfilesLoader](https://github.com/kazurayam/ExecutionProfilesLoader) will make my work on Katalon Studio easier.
-
-
-
