@@ -108,7 +108,7 @@ Q4. When I ran a Test Case with the "`ProductionEnv`" Profile applied, is the `G
 The Test Case [`Test Cases/TC3`](Scripts/TC3/Script1625824414513.groovy) casts a spell:
 ```
 CustomKeywords."com.kazurayam.ks.globalvariable.ExecutionProfilesLoader.loadProfile"("ProductEnv")
-...
+```
 
 This is just the same as:
 
