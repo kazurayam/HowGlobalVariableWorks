@@ -9,12 +9,13 @@ println "GlobalVariable.URL is present before loading?   : " + EGV.isGlobalVaria
 println "GlobalVariable.URL value before loading         : " + EGV.getGlobalVariableValue("URL")
 
 CustomKeywords."com.kazurayam.ks.globalvariable.ExecutionProfilesLoader.loadProfile"("ProductEnv")
-println "GlobalVariable.URL is present after loading?    : " + EGV.isGlobalVariablePresent("URL")
-println "GlobalVariable.URL value after loading          : " + EGV.getGlobalVariableValue("URL")
+println "GlobalVariable.URL is present after loading Product?    : " + EGV.isGlobalVariablePresent("URL")
+println "GlobalVariable.URL value after loading Product          : " + EGV.getGlobalVariableValue("URL")
 
 new ExecutionProfilesLoader().loadProfiles("ProductEnv", "DevelopEnv")
-println "GlobalVariable.URL is present after clear?      : " + EGV.isGlobalVariablePresent("URL")
-println "GlobalVariable.URL value after clear            : " + EGV.getGlobalVariableValue("URL")
+println "GlobalVariable.URL is present after loading Develop?    : " + EGV.isGlobalVariablePresent("URL")
+println "GlobalVariable.URL value after loading Develop          : " + EGV.getGlobalVariableValue("URL")
+
 println "GlobalVariable.PARAM_PRODUCT is present?        : " + EGV.isGlobalVariablePresent("PARAM_PRODUCT")
 println "GlobalVariable.PARAM_PRODUCT                    : " + EGV.getGlobalVariableValue("PARAM_PRODUCT")
 println "GlobalVariable.PARAM_DEVELOP is present?        : " + EGV.isGlobalVariablePresent("PARAM_DEVELOP")
