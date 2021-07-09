@@ -19,9 +19,3 @@ println "GlobalVariable.PARAM_PRODUCT value              : " + EGV.getGlobalVari
 println "GlobalVariable.PARAM_DEVELOP is present?        : " + EGV.isGlobalVariablePresent("PARAM_DEVELOP")
 println "GlobalVariable.PARAM_DEVELOP value              : " + EGV.getGlobalVariableValue("PARAM_DEVELOP")
 
-println "GlobalVariable.ADDED is present before loading? : " + EGV.isGlobalVariablePresent("ADDED")
-ExecutionProfilesLoader.loadEntries(["ADDED": "Hello, world!"])
-println "GlobalVariable.ADDED is present after loading?  : " + EGV.isGlobalVariablePresent("ADDED")
-println "GlobalVariable.ADDED value                      : " + EGV.getGlobalVariableValue("ADDED")
-
-
